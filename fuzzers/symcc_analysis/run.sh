@@ -11,5 +11,11 @@
 # - env FUZZARGS: extra arguments to pass to the fuzzer
 ##
 
+mkdir -p "$SHARED/findings"
+
+$FUZZER/symcc/util/pure_concolic_execution.sh -i "$TARGET/corpus/$PROGRAM" \
+    -o "$SHARED/findings" \
+    $FUZZARGS -- "$OUT/afl/$PROGRAM" $ARGS 2>&1 &
+
 echo "No fuzzer included. This is just for building an analysis target."
 exit 1

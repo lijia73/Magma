@@ -2,10 +2,12 @@
 set -e
 
 apt-get update && \
-    apt-get install -y make build-essential clang-9 git wget cmake subversion \
-        ninja-build python-pip zlib1g-dev rustc cargo inotify-tools
+    apt-get install -y make build-essential clang-9 git wget \
+        ninja-build python3-pip zlib1g-dev rustc cargo inotify-tools
 
-pip install lit
+pip3 install lit
+
+pip3 install -U cmake==3.21.0
 
 update-alternatives \
   --install /usr/lib/llvm              llvm             /usr/lib/llvm-9  20 \

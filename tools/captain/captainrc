@@ -10,7 +10,7 @@
 WORKDIR=./workdir
 
 # REPEAT: number of campaigns to run per program (per fuzzer)
-REPEAT=3
+REPEAT=1
 
 # [WORKER_MODE]: defines the type of CPU resources to allocate (default: 1)
 # - 1: logical cores (possibly SMT-enabled)
@@ -19,7 +19,7 @@ REPEAT=3
 # WORKER_MODE=1
 
 # [WORKERS]: number of worker threads (default: all cores)
-# WORKERS=3
+WORKERS=8
 
 # [WORKER_POOL]: a space-separated list of logical cores to allocate
 # WORKER_POOL="1 3 5 7 9"
@@ -40,7 +40,7 @@ POLL=5
 # CACHE_ON_DISK=1
 
 # [NO_ARCHIVE]: if set, campaign workdirs will not be tarballed (default: unset)
-# NO_ARCHIVE=1
+NO_ARCHIVE=1
 
 # [TMPFS_SIZE]: the size of the tmpfs mounted volume. This only applies when
 # CACHE_ON_DISK is not set (default: 50g)
@@ -71,12 +71,12 @@ POLL=5
 ###
 
 # FUZZERS: an array of fuzzer names (from magma/fuzzers/*) to evaluate
-FUZZERS=(afl aflfast moptafl aflplusplus fairfuzz honggfuzz)
+FUZZERS=(symcc_afl)
 
 # [fuzzer_TARGETS]: an array of target names (from magma/targets/*) to fuzz with
 # `fuzzer`. The `fuzzer` prefix is a fuzzer listed in the FUZZERS array
 # (default: all targets)
-# afl_TARGETS=(libpng libtiff libxml2)
+symcc_analysis_TARGETS=(libpng libxml2 poppler openssl sqlite3 php)
 
 # [fuzzer_target_PROGRAMS]: an array of program names (from
 # magma/targets/target/configrc) to use as execution drivers when fuzzing the

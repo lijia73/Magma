@@ -32,13 +32,9 @@ fi
     mkdir -p build
     pushd build
     cmake -G Ninja ../ \
-        -DQSYM_BACKEND=OFF \
+        -DQSYM_BACKEND=ON \
         -DZ3_DIR="$FUZZER/z3/cmake_conf"
     ninja
-    popd
-
-    pushd util/symcc_fuzzing_helper
-    cargo build --release
     popd
 )
 
